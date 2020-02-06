@@ -1,0 +1,137 @@
+@import "devextreme-override";
+@import "variables";
+@import "utilities";
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.content {
+  line-height: 1.5;
+
+  h2 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.content-block {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+
+  .screen-x-small & {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.responsive-paddings {
+  padding: 20px;
+
+  .screen-large & {
+    padding: 40px;
+  }
+}
+
+.dx-card.wide-card {
+  border-radius: 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+.full-height-scrollable > .dx-scrollable-wrapper > .dx-scrollable-container > .dx-scrollable-content {
+  height: 100%;
+
+  & > .dx-scrollview-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+}
+
+/**
+ * Form
+ */
+.form-wrapper {
+  .form-group {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    border-radius: 0.15rem;
+    @include shadow($card-shadow);
+
+    .group-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      border-bottom: 2px solid $base-accent;
+      padding-bottom: 3px;
+      display: inline-block;
+    }
+  }
+
+  .field-group {
+    margin-top: -0.5rem;
+  }
+
+  .field {
+    @include flexbox();
+    @include flex-direction(column);
+
+    &.row-layout {
+      @include flex-direction(row);
+      @include align-items(center);
+
+      .field-label {
+        margin-right: 1rem;
+        min-width: 10%;
+      }
+    }
+
+    margin-top: 0.5rem;
+    min-height: 36px;
+
+    .field-label {
+      text-align: left;
+      margin-bottom: 0.15rem;
+    }
+
+    .field-value {
+      min-height: 36px;
+    }
+
+    .field-value-static {
+      margin-bottom: 0.15rem;
+    }
+
+    .field-label-bold {
+      font-weight: 500;
+    }
+  }
+}
+
+/**
+ * Main Button
+ */
+
+.main-button {
+  color: #FFFFFF;
+  font-family: 'Source Sans Pro';
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
+  text-align: center;
+  background: #00A39C;
+  border: none;
+  border-radius: 7px;
+}

@@ -1,0 +1,37 @@
+<header>
+  <dx-toolbar class="header-toolbar">
+    <dxi-item
+      *ngIf="menuToggleEnabled"
+      location="before"
+      widget="dxButton"
+      cssClass="menu-button"
+      [options]="{
+          icon: 'menu',
+          stylingMode: 'text',
+          onClick: toggleMenu
+      }">
+    </dxi-item>
+    <dxi-item
+      location="before"
+      cssClass="header-logo">
+      <div *dxTemplate="let data of 'item'">
+        <img src="../../assets/images/logo.png" alt="logo">
+      </div>
+    </dxi-item>
+    <dxi-item
+      location="after"
+      locateInMenu="auto">
+      <div *dxTemplate="let data of 'item'">
+        <dx-button
+          class="user-button authorization"
+          width="170px"
+          height="100%"
+          stylingMode="text">
+          <div *dxTemplate="let data of 'content'">
+            <app-user-panel></app-user-panel>
+          </div>
+        </dx-button>
+      </div>
+    </dxi-item>
+  </dx-toolbar>
+</header>
