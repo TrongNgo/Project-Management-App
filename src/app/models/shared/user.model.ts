@@ -7,7 +7,7 @@ export class UserModel {
   permissions: string[] = [];
   accessToken: string;
   refreshToken: string;
-
+  isTenantManager: boolean = false;
   // UI Only
   nameAvatar: string;
 

@@ -26,7 +26,7 @@ export class LoginFormComponent {
       return true;
     }
     return false;
-  };
+  }
 
   onLoginClick(args) {
     if (!args.validationGroup.validate().isValid) {
