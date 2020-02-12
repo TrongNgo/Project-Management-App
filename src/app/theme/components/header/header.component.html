@@ -1,36 +1,17 @@
 <header>
   <dx-toolbar class="header-toolbar">
-    <dxi-item
-      *ngIf="menuToggleEnabled"
-      location="before"
-      widget="dxButton"
-      cssClass="menu-button"
-      [options]="{
-          icon: 'menu',
-          stylingMode: 'text',
-          onClick: toggleMenu
-      }">
-    </dxi-item>
-    <dxi-item
-      location="before"
-      cssClass="header-logo">
-      <div *dxTemplate="let data of 'item'">
-        <img src="../../assets/images/logo.png" alt="logo">
+    <dxi-item>
+      <div>
+        <input type="search" placeholder="Search" aria-expanded="false" autocomplete="off">
+        <i class="fas fa-search"></i>
       </div>
     </dxi-item>
+
     <dxi-item
       location="after"
       locateInMenu="auto">
       <div *dxTemplate="let data of 'item'">
-        <dx-button
-          class="user-button authorization"
-          width="170px"
-          height="100%"
-          stylingMode="text">
-          <div *dxTemplate="let data of 'content'">
-            <app-user-panel></app-user-panel>
-          </div>
-        </dx-button>
+          <app-user-panel></app-user-panel>
       </div>
     </dxi-item>
   </dx-toolbar>

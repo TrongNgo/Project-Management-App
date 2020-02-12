@@ -61,6 +61,7 @@
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-var-requires": false,
+    "object-literal-shorthand": false,
     "object-literal-key-quotes": [
       true,
       "as-needed"
@@ -72,6 +73,7 @@
       "single"
     ],
     "trailing-comma": false,
+    "no-trailing-whitespace": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,

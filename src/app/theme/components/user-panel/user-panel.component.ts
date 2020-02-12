@@ -29,6 +29,8 @@ export class UserPanelComponent implements OnInit, OnDestroy {
   currentUser: UserModel = new UserModel();
   subscription: Subscription = new Subscription();
 
+  isOpenMenu: boolean = false;
+
   constructor(private authService: AuthenticationService) {
   }
 
@@ -36,6 +38,10 @@ export class UserPanelComponent implements OnInit, OnDestroy {
     this.subscription.add(this.authService.currentUser.subscribe((user) => {
       this.currentUser = user;
     }));
+  }
+
+  toggleContextMenu() {
+    this.isOpenMenu = !this.isOpenMenu;
   }
 
   ngOnDestroy() {

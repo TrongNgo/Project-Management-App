@@ -3,12 +3,18 @@ import * as faker from 'faker';
 import {UserModel} from '@app/models/shared';
 
 export function randomLoggedUser(): UserModel {
+  const fullName =  faker.name.findName();
+  const nameArray = fullName.split(' ');
+  const firstKey = nameArray[0][0];
+  const length = nameArray.length;
+  const lastKey = nameArray[length - 1][0];
+
   const user = new UserModel({
     id: faker.random.number(),
-    fullName: faker.name.findName(),
-    firstName: faker.name.firstName(),
-    lastName: faker.name.lastName(),
-    avatarImg: faker.image.avatar(),
+    fullName: 'Trong Ngo',
+    firstName: 'Trong',
+    lastName: 'Ngo',
+    nameAvatar: 'TN',
     accessToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJuYmYiOjE2NDA5NzAwMDAsImV4' +
       'cCI6MTY0MDk3MDAwMCwiaWF0IjoxNjQwOTcwMDAwfQ.R0xydJfSjaAfbglZWZqlH9aCZ39MqozD52MPVJ0AZDM',
     refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJZCI6IjEiLCJuYmYiOjE2NDA5NzAwMDAsI' +

@@ -1,7 +1,7 @@
 <div class="user-panel">
   <div class="user-info" *ngIf="currentUser">
-    <div class="image-container">
-      <div class="user-image">
+    <div id="imageContainer" class="image-container" (click)="toggleContextMenu()">
+      <div class="user-image d-flex justify-content-center">
         <ng-container *ngIf="currentUser.avatarImg">
           <img src="{{currentUser.avatarImg}}">
         </ng-container>
@@ -10,14 +10,14 @@
         </ng-container>
       </div>
     </div>
+
     <div class="user-name">{{currentUser.fullName}}</div>
   </div>
   <dx-context-menu
     [items]="menuItems"
-    target=".user-button"
-    showEvent="dxclick"
-    width="170px"
-    [position]="{ my: 'top center', at: 'bottom center' }"
+    target="#imageContainer"
+    [position]="{ my: 'top left', at: 'bottom left' }"
+    [visible]="isOpenMenu"
     cssClass="user-menu">
   </dx-context-menu>
 </div>
