@@ -1,14 +1,28 @@
-<div class="menu-container">
-  <dx-tree-view
-    expandEvent="click"
-    width="100%"
-    [items]="items"
-    (onInitialized)="onMenuInitialized($event)"
-    (onItemClick)="onItemClick($event)"
-    (onContentReady)="updateSelection($event)"
-    (onSelectionChanged)="updateSelection($event)"
-    [selectByClick]="true"
-    selectionMode="single"
-    keyExpr="path">
-  </dx-tree-view>
+<!--<div class="menu-container">-->
+<!--  <dx-tree-view-->
+<!--    expandEvent="click"-->
+<!--    width="100%"-->
+<!--    [items]="items"-->
+<!--    (onInitialized)="onMenuInitialized($event)"-->
+<!--    (onItemClick)="onItemClick($event)"-->
+<!--    (onContentReady)="updateSelection($event)"-->
+<!--    (onSelectionChanged)="updateSelection($event)"-->
+<!--    [selectByClick]="true"-->
+<!--    selectionMode="single"-->
+<!--    keyExpr="path">-->
+<!--  </dx-tree-view>-->
+<!--</div>-->
+
+<div class="md-wrapper d-flex justify-content-start">
+  <div class="menu-wrapper">
+		<div *ngFor="let page of pages" class="menu-item" routerLinkActive="active">
+<!--			<a [innerHTML]="page.icon" [routerLink]="page.routerLink">-->
+<!--              {{ page.text }}-->
+<!--            </a>-->
+          <div [routerLink]="page.routerLink">
+            <a [innerHTML]="page.icon"></a>
+            <span>{{ page.text }}</span>
+          </div>
+		</div>
+  </div>
 </div>

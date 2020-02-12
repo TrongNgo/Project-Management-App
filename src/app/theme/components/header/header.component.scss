@@ -7,6 +7,28 @@
 
   ::ng-deep .dx-toolbar.header-toolbar {
     background: #e0e0e0;
+
+    .search-container {
+      position: relative;
+    }
+
+    .search-input-field {
+      border: none;
+      border-radius: 5px;
+      width: 200px;
+      padding: 5px 10px 5px 20px;
+    }
+
+    .search-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   ::ng-deep .dx-toolbar .dx-toolbar-item.menu-button > .dx-toolbar-item-content .dx-icon {
