@@ -3,8 +3,15 @@ import {RouterModule} from '@angular/router';
 
 import {ThemeModule} from '@app/theme';
 import {SharedModule} from '@app/shared/shared.module';
-import {ProjectComponent} from './project.component';
+import {ProjectsComponent} from './projects.component';
 
+const COMPONENTS = [
+  ProjectsComponent
+];
+
+const PROVIDERS = [
+
+];
 
 @NgModule({
   imports: [
@@ -14,13 +21,13 @@ import {ProjectComponent} from './project.component';
     RouterModule.forChild([
       {
         path: '',
-        component: ProjectComponent
+        component: ProjectsComponent
       }
     ])
   ],
   declarations: [
-    ProjectComponent
+    ...COMPONENTS
   ]
 })
-export class ProjectModule {
+export class ProjectsModule {
 }

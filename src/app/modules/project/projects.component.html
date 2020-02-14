@@ -1,0 +1,14 @@
+<div class="list-container">
+  <dx-list
+    height="600"
+    [dataSource]="items"
+    selectionMode="multiple"
+    [showSelectionControls]="true"
+    itemTemplate="data">
+    <div *dxTemplate="let item of 'data'">
+      <div>{{item}}</div>
+    </div>
+  </dx-list>
+  <dx-button text="Previous" (onClick)="prevClick($event)"></dx-button>
+  <dx-button text="Next" (onClick)="nextClick($event)"></dx-button>
+</div>

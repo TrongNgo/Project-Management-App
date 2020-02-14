@@ -43,7 +43,7 @@ export class SideNavigationMenuComponent implements OnInit {
   // TODO: Edit the menu here
   pages = [
     {
-      routerLink: '/',
+      routerLink: 'projects',
       text: 'Projects',
       icon: '<i class="fas fa-store"></i>'
     },
