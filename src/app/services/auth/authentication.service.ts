@@ -70,12 +70,10 @@ export class AuthenticationService {
     if (!homeUrl) {
       homeUrl = AppStorage.getTokenData(HOME_URL_KEY);
     }
-    if (homeUrl) {
+    if (homeUrl && homeUrl !== '/') {
       this.router.navigateByUrl(homeUrl);
     } else {
-      // TODO: Handle other cases
-      console.error('None homeUrl');
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
     }
   }
 

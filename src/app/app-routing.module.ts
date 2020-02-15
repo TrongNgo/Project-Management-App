@@ -1,18 +1,29 @@
 import {NgModule} from '@angular/core';
 import {ExtraOptions, RouterModule, Routes} from '@angular/router';
 
-import {ErrorComponent} from '@app/theme';
+import {DefaultLayoutComponent, ErrorComponent} from '@app/theme';
 import {AuthGuard, GuestGuard} from '@app/services/auth';
 
 const routes: Routes = [
   {
-    path: '',
-    loadChildren: () => import('@app/modules/dashboard/dashboard.module').then(m => m.DashboardModule),
-    canActivate: [AuthGuard]
+      path: '',
+      component: DefaultLayoutComponent,
+      canActivate: [AuthGuard],
+      children: [
+          {
+              path: '',
+              redirectTo: '/home',
+              pathMatch: 'full'
+          },
+          {
+            path: 'home',
+            loadChildren: () => import('@app/modules/project/projects.module').then(m => m.ProjectsModule)
+          }
+      ]
   },
   {
-    path: '',
-    loadChildren: () => import('@app/modules/auth/auth.module').then(m => m.AuthModule),
+      path: '',
+      loadChildren: () => import('@app/modules/auth/auth.module').then(m => m.AuthModule),
   },
   {path: '**', component: ErrorComponent}
 ];

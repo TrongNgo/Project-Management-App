@@ -1,14 +1,14 @@
-<div class="list-container">
-  <dx-list
-    height="600"
-    [dataSource]="items"
-    selectionMode="multiple"
-    [showSelectionControls]="true"
-    itemTemplate="data">
-    <div *dxTemplate="let item of 'data'">
-      <div>{{item}}</div>
+<div class="project-container">
+  <div class="header">
+    <div class="header-title-container d-flex align-items-center">
+      <div class="header-title">
+        Home
+      </div>
     </div>
-  </dx-list>
-  <dx-button text="Previous" (onClick)="prevClick($event)"></dx-button>
-  <dx-button text="Next" (onClick)="nextClick($event)"></dx-button>
+    <div class="d-flex align-items-center">
+      <app-header></app-header>
+    </div>
+  </div>
+
+  <app-project-list></app-project-list>
 </div>

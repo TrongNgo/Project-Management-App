@@ -1,19 +1,11 @@
-<header>
-  <dx-toolbar class="header-toolbar">
-    <dxi-item>
-      <div class="search-container">
-        <input type="search" placeholder="Search" aria-expanded="false" autocomplete="off"
-               class="search-input-field">
-        <i class="fas fa-search search-icon"></i>
-      </div>
-    </dxi-item>
+<div class="d-flex">
+  <div class="search-container">
+    <input type="search" placeholder="Search" aria-expanded="false" autocomplete="off"
+           class="search-input-field">
+    <i class="fas fa-search search-icon"></i>
+  </div>
 
-    <dxi-item
-            location="after"
-            locateInMenu="auto">
-      <div *dxTemplate="let data of 'item'">
-        <app-user-panel></app-user-panel>
-      </div>
-    </dxi-item>
-  </dx-toolbar>
-</header>
+  <div>
+    <app-user-panel></app-user-panel>
+  </div>
+</div>

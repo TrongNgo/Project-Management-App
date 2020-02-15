@@ -1,0 +1,76 @@
+@import "variables";
+
+@mixin project-info {
+  display: inline-block;
+  padding: 0 10px;
+  border-radius: 4px;
+  height: 30px;
+  line-height: 30px;
+}
+
+:host {
+    .project-item-container {
+        color: $text-color;
+
+        .project-info-container {
+          font-size: $font-size-content;
+          padding-bottom: .5em;
+
+        }
+
+        .amount-info {
+          @include project-info;
+          background-color: $secondary-color;
+
+          &:hover {
+            background-color: $secondary-dark-color;
+          }
+        }
+
+        .open-status {
+          @include project-info;
+          background-color: $open-status;
+          &:hover {
+            background-color: $open-dark-status;
+          }
+        }
+
+        .close-status {
+          @include project-info;
+          background-color: $close-status;
+          &:hover {
+            background-color: $close-dark-status;
+          }
+        }
+
+        .project-detail-container {
+          .project-image-container {
+            width: 200px;
+            height: 100px;
+            background-color: $white-color;
+            border-radius: 5px;
+
+            .project-name-image {
+              width: 100%;
+              height: 100%;
+              background-color: $third-color;
+              border-radius: 5px;
+              padding: 10px;
+              font-size: 1.1em;
+              font-weight: 500;
+              line-height: 1.3;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+
+          .project-name {
+            font-size: $font-size-title;
+            font-weight: 500;
+            line-height: 1.5;
+          }
+
+        }
+    }
+
+}

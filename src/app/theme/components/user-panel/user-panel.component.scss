@@ -38,7 +38,7 @@
 
     .user-name {
       font-size: 14px;
-      color: $base-text-color;
+      color: $text-color;
       margin: 0 10px;
     }
   }
@@ -46,7 +46,7 @@
   .user-panel ::ng-deep {
     .dx-list-item .dx-icon {
       vertical-align: middle;
-      color: $base-text-color;
+      color: $text-color;
       margin-right: 16px;
     }
 

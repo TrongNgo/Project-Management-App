@@ -21,7 +21,6 @@ export class UserPanelComponent implements OnInit, OnDestroy {
       text: 'Logout',
       icon: 'runner',
       onClick: () => {
-        this.authService.logout();
       }
     }
   ];
@@ -40,8 +39,8 @@ export class UserPanelComponent implements OnInit, OnDestroy {
     }));
   }
 
-  toggleContextMenu() {
-    this.isOpenMenu = !this.isOpenMenu;
+  logOut() {
+    this.authService.logout();
   }
 
   ngOnDestroy() {

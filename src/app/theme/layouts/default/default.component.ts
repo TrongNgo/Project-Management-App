@@ -11,7 +11,7 @@ import {Subscription} from 'rxjs';
 })
 export class DefaultLayoutComponent implements OnInit, OnDestroy {
   selectedRoute = '';
-  menuOpened: boolean;
+  menuOpened: boolean = true;
   temporaryMenuOpened = false;
 
   menuMode = 'shrink';
@@ -80,6 +80,10 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
       this.temporaryMenuOpened = true;
       this.menuOpened = true;
     }
+  }
+
+  toggleMenu() {
+    this.menuOpened = !this.menuOpened;
   }
 
   ngOnDestroy() {

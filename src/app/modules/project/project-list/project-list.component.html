@@ -1,0 +1,12 @@
+<div class="list-container">
+  <dx-list
+    class="list-project-container"
+    [items]="items">
+      <div *dxTemplate="let item of 'item'">
+        <app-project-item></app-project-item>
+      </div>
+  </dx-list>
+
+  <dx-button text="Previous" (onClick)="prevClick($event)" class="previous-button"></dx-button>
+  <dx-button text="Next" (onClick)="nextClick($event)"></dx-button>
+</div>
