@@ -1,5 +1,10 @@
 @import "variables";
 
 .list-project-container {
-  height: calc(100vh - 120px);
+    height: calc(100vh - 120px);
 }
+
+::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-focused {
+    background-color: #ccc;
+}
+
