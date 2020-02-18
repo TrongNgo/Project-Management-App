@@ -37,6 +37,8 @@
   flex-direction: column;
   position: fixed;
   left: 240px;
+  top: 0;
+  right: 0;
   transition: left ease-in-out 250ms;
 }
 

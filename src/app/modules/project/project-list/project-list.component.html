@@ -1,12 +1,33 @@
-<div class="list-container">
-  <dx-list
-    class="list-project-container"
-    [items]="items">
-      <div *dxTemplate="let item of 'item'">
-        <app-project-item></app-project-item>
-      </div>
-  </dx-list>
+<div class="list-wrapper">
+    <div class="list-container">
+        <div class="button-container d-flex">
+            <dx-button
+                text="New Project"
+                icon="plus">
+            </dx-button>
+            <dx-button
+                    class="ml-3"
+                    text="Filter"
+                    icon="filter">
+            </dx-button>
+        </div>
 
-  <dx-button text="Previous" (onClick)="prevClick($event)" class="previous-button"></dx-button>
-  <dx-button text="Next" (onClick)="nextClick($event)"></dx-button>
+        <dx-list
+                class="list-project-container"
+                [dataSource]="dataSource">
+            <div *dxTemplate="let item of 'item'">
+                <app-project-item></app-project-item>
+            </div>
+        </dx-list>
+
+        <div class="d-flex justify-content-end">
+            <dx-button class="previous-button"
+                       text="Previous" (onClick)="prevClick($event)">
+            </dx-button>
+            <dx-button class="ml-3"
+                       text="Next" (onClick)="nextClick($event)">
+            </dx-button>
+        </div>
+    </div>
 </div>
+

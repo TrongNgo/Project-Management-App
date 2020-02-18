@@ -50,14 +50,22 @@
             line-height: $line-height-content;
 
             .project-image-container {
+                width: 180px;
                 height: 100px;
                 background-color: $white-color;
-                border-radius: 5px;
+
+                .background-hover {
+                    border-radius: 4px;
+                   &:hover {
+                       background-color: $background-dark-color;
+                       opacity: .7;
+                   }
+                }
 
                 .project-name-container {
                     background-color: $third-color;
                     padding: 10px;
-                    border-radius: 5px;
+                    border-radius: 4px;
 
                     .project-name-image {
                         width: 180px;
@@ -76,24 +84,30 @@
                 }
             }
 
-            .project-name {
-                font-size: $font-size-title;
-                font-weight: 500;
-                line-height: 1.5;
-            }
-
             .project-detail {
+                overflow: hidden;
+
                 .info-label {
                     font-weight: 500;
                 }
-            }
 
-            .project-description {
-                display: block;
-                width: 100%;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
+                .project-description {
+                    display: block;
+                    width: 100%;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                .project-name {
+                    font-size: $font-size-title;
+                    font-weight: 500;
+                    line-height: 1.5;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
             }
         }
     }

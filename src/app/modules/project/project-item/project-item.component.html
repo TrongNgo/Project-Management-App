@@ -1,5 +1,5 @@
 <div class="project-item-container">
-    <div class="project-info-container d-flex">
+    <div class="project-info-container d-flex justify-content-end">
         <div class="amount-info">
             <span class="font-icon">
                 <i class="fas fa-stream"></i>
@@ -28,18 +28,20 @@
 
     <div class="project-detail-container d-flex">
         <div class="project-image-container">
-<!--            <div class="d-flex justify-content-center align-items-center">-->
-<!--                <img src="https://www.denverslocksmiths.com/wp-content/uploads/2018/04/airbnblogo.png"-->
-<!--                     height="80">-->
-<!--            </div>-->
-            <div class="project-name-container">
-                <div class="project-name-image">
-                    Sales Management
+            <a [routerLink]="'/project/:projectName'" class="d-block w-100 h-100 background-hover">
+                <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+                    <img src="https://www.denverslocksmiths.com/wp-content/uploads/2018/04/airbnblogo.png"
+                         height="80">
                 </div>
-            </div>
+                <!--            <div class="project-name-container">-->
+                <!--                <div class="project-name-image">-->
+                <!--                    Sales Management-->
+                <!--                </div>-->
+                <!--            </div>-->
+            </a>
         </div>
         <div class="project-detail ml-3">
-            <div class="project-name">
+            <div class="project-name" [routerLink]="'/project/:projectName'">
                 Sales Management
             </div>
             <div class="client-info">
