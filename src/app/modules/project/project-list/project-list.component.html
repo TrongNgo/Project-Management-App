@@ -12,19 +12,20 @@
             </dx-button>
         </div>
 
-        <dx-list
+        <dx-list #list
                 class="list-project-container"
-                [items]="items">
-            <div *dxTemplate="let item of 'item'">
-                <app-project-item></app-project-item>
+                [dataSource]="dataSource"
+                itemTemplate="listItem">
+            <div *dxTemplate="let item of 'listItem'">
+                <app-project-item [project]="item"></app-project-item>
             </div>
         </dx-list>
 
         <div class="d-flex justify-content-end">
-            <dx-button class="previous-button"
+            <dx-button #prevBtn class="previous-button" [disabled]="true"
                        text="Previous" (onClick)="prevClick($event)">
             </dx-button>
-            <dx-button class="ml-3"
+            <dx-button #nextBtn class="ml-3"
                        text="Next" (onClick)="nextClick($event)">
             </dx-button>
         </div>

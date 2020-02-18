@@ -55,10 +55,11 @@
                 background-color: $white-color;
 
                 .background-hover {
-                    border-radius: 4px;
+                    box-shadow: 0px 0px 5px 1px $background-box-shadow, 0px 0px 5px 1px $background-box-shadow;
+                    border-radius: 5px;
+
                    &:hover {
-                       background-color: $background-dark-color;
-                       opacity: .7;
+                       background-color: $background-hover-10;
                    }
                 }
 
