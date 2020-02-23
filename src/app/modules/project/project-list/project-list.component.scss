@@ -12,7 +12,25 @@
             padding-top: 3em;
 
             .list-project-container {
-                height: calc(100vh - 210px);
+                height: calc(100vh - 220px);
+            }
+
+            ::ng-deep dx-list {
+                .dx-list-next-button {
+                    display: none;
+                }
+
+                .dx-list .dx-empty-message, .dx-list-item-content {
+                    padding: 25px 20px 25px 15px;
+                }
+            }
+
+            ::ng-deep .dx-list:not(.dx-list-select-decorator-enabled) .dx-list-item.dx-state-hover {
+                cursor: auto;
+            }
+
+            .btn-pagination-container {
+                padding: 15px 25px 15px 0;
             }
         }
 
@@ -29,7 +47,7 @@
                 margin-right: .2em;
 
                 font-size: 1em;
-                color: $text-color;
+                color: $white-color;
             }
         }
     }

@@ -1,73 +1,70 @@
 <div class="project-item-container">
     <div class="project-info-container d-flex justify-content-end">
         <div class="amount-info">
-            {{ project }}
             <span class="font-icon">
                 <i class="fas fa-stream"></i>
             </span>
             <span>Tasks </span>
-            <span>(20/40)</span>
+            <span>
+                ({{ project.completedTaskCount }}/{{ project.taskCount }})
+            </span>
         </div>
         <div class="amount-info ml-3">
             <span class="font-icon">
               <i class="far fa-user"></i>
             </span>
             <span>Members </span>
-            <span>(10)</span>
+            <span>({{ project.memberCount }})</span>
         </div>
         <div class="amount-info ml-3">
             <span class="font-icon">
               <i class="fas fa-stopwatch"></i>
             </span>
             <span>Milestone </span>
-            <span>(2)</span>
+            <span>({{ project.milestoneCount }})</span>
         </div>
-        <div class="open-status ml-3">
-            Open
+        <div [ngClass]=" project.status === projectStatusType.open ? 'open-status ml-3' : 'close-status ml-3'">
+            {{ projectStatus[project.status - 1].text }}
         </div>
     </div>
 
     <div class="project-detail-container d-flex">
         <div class="project-image-container">
-            <a [routerLink]="'/project/:projectName'" class="d-block w-100 h-100 background-hover">
-                <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-                    <img src="https://www.denverslocksmiths.com/wp-content/uploads/2018/04/airbnblogo.png"
-                         height="80">
+            <span class="project-image-hover"></span>
+            <a [routerLink]="['/project/', project.urlName]" class="d-block background-hover">
+                <div *ngIf="project.imageUrl"
+                        class="w-100 h-100 d-flex justify-content-center align-items-center">
+                    <img [src]="project.imageUrl" height="80">
                 </div>
-                <!--            <div class="project-name-container">-->
-                <!--                <div class="project-name-image">-->
-                <!--                    Sales Management-->
-                <!--                </div>-->
-                <!--            </div>-->
+                <div *ngIf="!project.imageUrl" class="project-name-container">
+                    <div class="project-name-image">
+                        <span>{{ project.projectName }}</span>
+                    </div>
+                </div>
             </a>
         </div>
         <div class="project-detail ml-3">
-            <div class="project-name" [routerLink]="'/project/:projectName'">
-                Sales Management
+            <div class="project-name" [routerLink]="['/project/', project.urlName]">
+                <span>{{ project.projectName }}</span>
             </div>
             <div class="client-info">
                 <span class="info-label">Client: </span>
-                <span>John</span>
+                <span>{{ project.clientName }}</span>
             </div>
 
             <div class="d-flex flex-row">
                 <div>
                     <span class="info-label">Start Date: </span>
-                    <span>20/10/219</span>
+                    <span>{{ project.startDate | date: 'mediumDate' }}</span>
                 </div>
                 <div class="ml-4">
                     <span class="info-label">End Date: </span>
-                    <span>8/6/2020</span>
+                    <span>{{ project.endDate | date: 'mediumDate' }}</span>
                 </div>
             </div>
             <div class="project-description">
                 <span class="info-label">Description: </span>
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            </span>
+                <span>{{ project.description }}</span>
             </div>
         </div>
     </div>

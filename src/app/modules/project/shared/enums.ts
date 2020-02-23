@@ -1,4 +1,4 @@
-export enum PROJECT_STATUS {
+export enum ProjectStatusType {
     open = 1,
     close
 }

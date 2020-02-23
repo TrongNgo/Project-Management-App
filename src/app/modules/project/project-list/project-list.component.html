@@ -1,34 +1,47 @@
-<div class="list-wrapper">
-    <div class="list-container">
-        <div class="button-container d-flex">
-            <dx-button
-                text="New Project"
-                icon="plus">
-            </dx-button>
-            <dx-button
-                    class="ml-3"
-                    text="Filter"
-                    icon="filter">
-            </dx-button>
-        </div>
-
-        <dx-list #list
-                class="list-project-container"
-                [dataSource]="dataSource"
-                itemTemplate="listItem">
-            <div *dxTemplate="let item of 'listItem'">
-                <app-project-item [project]="item"></app-project-item>
+<ng-container>
+    <dx-load-panel *ngIf="isProcessing"
+                   [visible]="true" [showPane]="false"
+                   [message]="'Processing'">
+    </dx-load-panel>
+    <div class="list-wrapper">
+        <div class="list-container">
+            <div class="button-container d-flex">
+                <!--       Only Staff         -->
+                <dx-button text="New Project"
+                           (click)="onNewProject()"
+                        icon="plus">
+                </dx-button>
+                <dx-button
+                        class="ml-3"
+                        text="Filter"
+                        icon="filter">
+                </dx-button>
             </div>
-        </dx-list>
 
-        <div class="d-flex justify-content-end">
-            <dx-button #prevBtn class="previous-button" [disabled]="true"
-                       text="Previous" (onClick)="prevClick($event)">
-            </dx-button>
-            <dx-button #nextBtn class="ml-3"
-                       text="Next" (onClick)="nextClick($event)">
-            </dx-button>
+            <dx-list #list
+                     class="list-project-container"
+                     [dataSource]="dataSource"
+                     itemTemplate="listItem">
+                <div *dxTemplate="let item of 'listItem'">
+                    <app-project-item [project]="item"></app-project-item>
+                </div>
+            </dx-list>
+
+            <div class="d-flex justify-content-end btn-pagination-container">
+                <dx-button #prevBtn class="previous-button" [disabled]="true"
+                           text="Previous" (onClick)="prevClick($event)">
+                </dx-button>
+                <dx-button #nextBtn class="ml-3"
+                           text="Next" (onClick)="nextClick($event)">
+                </dx-button>
+            </div>
         </div>
     </div>
-</div>
+</ng-container>
 
+<ng-container *ngIf="isOpenProjectDetailPopup">
+    <app-project-detail
+            [(visible)]="isOpenProjectDetailPopup"
+            [(project)]="newProject">
+    </app-project-detail>
+</ng-container>

@@ -1,4 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ProjectViewModel} from '@app/models/project/project.model';
+import {PROJECT_STATUS} from '@app/modules/project/shared/constants';
+import {ProjectStatusType} from '@app/modules/project/shared/enums';
 
 @Component({
     selector: 'app-project-item',
@@ -7,8 +10,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 
 export class ProjectItemComponent implements OnInit {
-    @Input() project: any;
+    @Input() project: ProjectViewModel;
+
+    projectStatus = PROJECT_STATUS;
+    projectStatusType = ProjectStatusType;
 
     ngOnInit() {
     }
+
 }

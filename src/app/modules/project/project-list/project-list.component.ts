@@ -1,7 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-
 import {DxButtonComponent, DxListComponent} from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
+
+import {ProjectDetailModel} from '@app/models/project/project.model';
+import {ProjectService} from '@app/services/project/project.service';
+import {ProjectStatusType} from '@app/modules/project/shared/enums';
 
 @Component({
     selector: 'app-project-list',
@@ -15,28 +18,32 @@ export class ProjectListComponent implements OnInit {
     @ViewChild('nextBtn', { static: false }) nextBtn: DxButtonComponent;
 
     dataSource: DataSource;
-    // listData: any;
-    items: any[];
-    pageSize: number = 2;
+    pageSize: number = 3;
     totalProjectCount: number;
     maxPage: number;
 
-    constructor() {
+    projectList: ProjectDetailModel[] = [];
+    filteringProjectList: ProjectDetailModel[] = [];
+    newProject: ProjectDetailModel;
+
+    isProcessing: boolean = false;
+    isOpenProjectDetailPopup: boolean = false;
+
+    constructor(private projectService: ProjectService) {
     }
 
     ngOnInit() {
+        this.projectService.getProjectsForView().subscribe((projects) => {
+            this.projectList = projects;
+            this.filteringProjectList = projects;
+            this.configureDataSource(this.filteringProjectList);
+        });
+    }
+
+    configureDataSource(projects: ProjectDetailModel[]) {
         this.dataSource = new DataSource({
-            store: [
-                'Prepare 2016 Financial',
-                'Prepare 2016 Marketing Plan',
-                'Update Personnel Files',
-                'Review Health Insurance Options Under the Affordable Care Act',
-                'New Brochures',
-                '2016 Brochure Designs',
-                'Brochure Design Review',
-                'Website Re-Design Plan'
-            ],
-            sort: 'ProductID',
+            store: projects,
+            sort: 'id',
             paginate: true,
             pageSize: this.pageSize,
             requireTotalCount: true
@@ -72,5 +79,13 @@ export class ProjectListComponent implements OnInit {
 
     changePage() {
         this.dataSource.load();
+    }
+
+    onNewProject() {
+        this.newProject = new ProjectDetailModel({
+            status: ProjectStatusType.open
+        });
+
+        this.isOpenProjectDetailPopup = true;
     }
 }
