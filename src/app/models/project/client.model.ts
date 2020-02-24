@@ -7,7 +7,7 @@ export class ClientModel {
     email: string;
     phoneNumber: string;
 
-    constructor(init?: Partial<ClientModel>) {
-        Object.assign({}, init);
+    constructor(init ?: Partial<ClientModel>) {
+        Object.assign(this, init);
     }
 }

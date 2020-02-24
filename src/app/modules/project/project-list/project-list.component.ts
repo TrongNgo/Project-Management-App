@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {DxButtonComponent, DxListComponent} from 'devextreme-angular';
 import DataSource from 'devextreme/data/data_source';
 
-import {ProjectDetailModel} from '@app/models/project/project.model';
+import {ProjectDetailModel, ProjectViewModel} from '@app/models/project/project.model';
 import {ProjectService} from '@app/services/project/project.service';
 import {ProjectStatusType} from '@app/modules/project/shared/enums';
 
@@ -22,8 +22,8 @@ export class ProjectListComponent implements OnInit {
     totalProjectCount: number;
     maxPage: number;
 
-    projectList: ProjectDetailModel[] = [];
-    filteringProjectList: ProjectDetailModel[] = [];
+    projectList: ProjectViewModel[] = [];
+    filteringProjectList: ProjectViewModel[] = [];
     newProject: ProjectDetailModel;
 
     isProcessing: boolean = false;
@@ -33,6 +33,10 @@ export class ProjectListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getProjects();
+    }
+
+    getProjects() {
         this.projectService.getProjectsForView().subscribe((projects) => {
             this.projectList = projects;
             this.filteringProjectList = projects;
@@ -40,7 +44,7 @@ export class ProjectListComponent implements OnInit {
         });
     }
 
-    configureDataSource(projects: ProjectDetailModel[]) {
+    configureDataSource(projects: ProjectViewModel[]) {
         this.dataSource = new DataSource({
             store: projects,
             sort: 'id',
@@ -87,5 +91,9 @@ export class ProjectListComponent implements OnInit {
         });
 
         this.isOpenProjectDetailPopup = true;
+    }
+
+    cancelPopup(visible: boolean) {
+        this.isOpenProjectDetailPopup = visible;
     }
 }

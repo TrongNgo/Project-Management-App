@@ -4,7 +4,10 @@ import {RouterModule} from '@angular/router';
 import {ThemeModule} from '@app/theme';
 import {SharedModule} from '@app/shared/shared.module';
 
-import {ProjectService} from '@app/services/project/project.service';
+import {
+  ProjectService,
+  ClientService
+} from '@app/services/project';
 
 import {ProjectsComponent} from '@app/modules/project/projects.component';
 import {ProjectListComponent} from '@app/modules/project/project-list/project-list.component';
@@ -19,7 +22,8 @@ const COMPONENTS = [
 ];
 
 const PROVIDERS = [
-  ProjectService
+  ProjectService,
+  ClientService
 ];
 
 @NgModule({

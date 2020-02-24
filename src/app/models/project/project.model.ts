@@ -17,7 +17,6 @@ export class ProjectViewModel {
     milestoneCount: number;
     imageUrl: string;
 
-
     constructor(init ?: Partial<ProjectViewModel>) {
         Object.assign(this, init);
     }

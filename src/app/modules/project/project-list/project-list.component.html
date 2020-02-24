@@ -42,6 +42,14 @@
 <ng-container *ngIf="isOpenProjectDetailPopup">
     <app-project-detail
             [(visible)]="isOpenProjectDetailPopup"
-            [(project)]="newProject">
+            [project]="newProject"
+            (onSuccess)="getProjects()"
+            (onCancel)="cancelPopup($event)">
     </app-project-detail>
+</ng-container>
+
+<ng-container>
+    <dx-popover>
+
+    </dx-popover>
 </ng-container>

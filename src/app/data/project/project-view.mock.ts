@@ -1,7 +1,11 @@
 import * as faker from 'faker';
 import { random, sample } from 'lodash';
-import {ProjectViewModel} from '@app/models/project/project.model';
+import {ProjectDetailModel, ProjectViewModel} from '@app/models/project/project.model';
 import {ProjectStatusType} from '@app/modules/project/shared/enums';
+
+function mockId() {
+    return faker.random.number();
+}
 
 export function getRandomProjectView(count: number): ProjectViewModel[] {
     return Array(count).fill({}).map((item: ProjectViewModel, index) => {
@@ -34,6 +38,13 @@ export function getRandomProjectView(count: number): ProjectViewModel[] {
             milestoneCount: random(1, 10),
             imageUrl: (index / 5 === 0) ? undefined : imgSample
         });
+    });
+}
+
+export function updateProjectDetail(): ProjectDetailModel {
+    return new ProjectDetailModel({
+        id: mockId(),
+        projectId: mockId()
     });
 }
 

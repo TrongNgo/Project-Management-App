@@ -1,6 +1,6 @@
 import * as faker from 'faker';
 
-import {ClientModel} from '@app/models/project/client.model';
+import {ClientModel} from '@app/models/project';
 
 export function getRandomClients(count: number): ClientModel[] {
     return Array(count).fill({}).map((item, index) => {
