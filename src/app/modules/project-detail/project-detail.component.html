@@ -1,12 +1,60 @@
-<div class="project-container">
+<div class="project-detail-container">
     <div class="header">
-        <div class="header-title-container d-flex align-items-center">
-            <div class="header-title">
-                Home
+        <div class="right-site">
+            <div class="header-title-container d-flex align-items-center">
+                <span class="home-btn" [routerLink]="'/home'">
+                    <i class="fas fa-home"></i>
+                </span>
+
+                <div class="header-title">
+                    {{ project.name }}
+                </div>
+                <div [ngClass]="project.status === projectStatusType.open ? 'open-status ml-3' : 'close-status ml-3'">
+                    {{ PROJECT_STATUS[project.status - 1].text }}
+                </div>
             </div>
+
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <a class="nav-link"
+                       routerLink="board"
+                       routerLinkActive="active">
+                        Board
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       routerLink="document"
+                       routerLinkActive="active">
+                        Document
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       routerLink="report"
+                       routerLinkActive="active" >
+                        Report
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                       routerLink="calendar"
+                       routerLinkActive="active" >
+                        Calendar
+                    </a>
+                </li>
+            </ul>
         </div>
-        <div class="d-flex align-items-center">
+
+        <div class="left-site d-flex align-items-center">
             <app-header></app-header>
         </div>
+    </div>
+
+    <div class="project-detail-content">
+        <router-outlet></router-outlet>
     </div>
 </div>

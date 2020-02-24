@@ -29,9 +29,9 @@
     </div>
 
     <div class="project-detail-container d-flex">
-        <div class="project-image-container">
+        <div class="project-image-container" [routerLink]="['/project/', project.urlName]">
             <span class="project-image-hover"></span>
-            <a [routerLink]="['/project/', project.urlName]" class="d-block background-hover">
+            <a class="d-block background-hover">
                 <div *ngIf="project.imageUrl"
                         class="w-100 h-100 d-flex justify-content-center align-items-center">
                     <img [src]="project.imageUrl" height="80">

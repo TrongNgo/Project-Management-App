@@ -2,7 +2,11 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {environment} from '@environment';
 import {ProjectDetailModel, ProjectViewModel} from '@app/models/project/project.model';
-import {getRandomProjectView, updateProjectDetail} from '@app/data/project';
+import {
+    getRandomProjectView,
+    updateProjectDetail,
+    getRandomProject
+} from '@app/data/project';
 
 @Injectable()
 export class ProjectService {
@@ -21,6 +25,13 @@ export class ProjectService {
             console.log('API: update Project');
         }
         return of (updateProjectDetail());
+    }
+
+    getProjectDetail(slug: string): Observable<ProjectDetailModel> {
+        if (environment.debug) {
+            console.log('API: get Project Info');
+        }
+        return of(getRandomProject(slug));
     }
 
 }

@@ -62,6 +62,7 @@ $close-dark-status: #5d5c61;
                 background-color: $white-color;
                 position: relative;
                 cursor: pointer;
+                outline: none;
 
                 .background-hover {
                     box-shadow: 2px 2px 4px 0px $background-box-shadow, -2px -1px 4px 0px $background-box-shadow;
@@ -126,6 +127,7 @@ $close-dark-status: #5d5c61;
                     font-weight: 600;
                     line-height: 1.5;
                     cursor: pointer;
+                    outline: none;
 
                     &:hover {
                         text-decoration: underline;

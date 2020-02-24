@@ -1,5 +1,5 @@
 import * as faker from 'faker';
-import { random, sample } from 'lodash';
+import {random, sample} from 'lodash';
 import {ProjectDetailModel, ProjectViewModel} from '@app/models/project/project.model';
 import {ProjectStatusType} from '@app/modules/projects/shared/enums';
 
@@ -44,6 +44,23 @@ export function updateProjectDetail(): ProjectDetailModel {
     return new ProjectDetailModel({
         id: mockId(),
         projectId: mockId()
+    });
+}
+
+export function getRandomProject(slug: string): ProjectDetailModel {
+    let projectNameArray = slug.split('-');
+    projectNameArray = projectNameArray.map(item => {
+        return item[0].toLocaleUpperCase() + item.slice(1);
+    });
+
+    const projectName = projectNameArray.join(' ');
+
+    return new ProjectDetailModel({
+        id: mockId(),
+        projectId: mockId(),
+        name: projectName,
+        urlName: slug,
+        status: ( mockId() % 2 === 0 ) ? ProjectStatusType.open : ProjectStatusType.close
     });
 }
 

@@ -8,9 +8,11 @@ import {
 } from '@app/services/project';
 
 import {BoardComponent} from '@app/modules/project-detail/board/board.component';
+import {BoardListComponent} from '@app/modules/project-detail/board/board-list/board-list.component';
 
 const COMPONENTS = [
   BoardComponent,
+  BoardListComponent
 ];
 
 const PROVIDERS = [

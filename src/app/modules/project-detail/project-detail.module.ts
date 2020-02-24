@@ -5,6 +5,7 @@ import {ThemeModule} from '@app/theme';
 import {SharedModule} from '@app/shared/shared.module';
 
 import {
+  ProjectService
 } from '@app/services/project';
 
 import {ProjectDetailComponent} from '@app/modules/project-detail/project-detail.component';
@@ -14,6 +15,7 @@ const COMPONENTS = [
 ];
 
 const PROVIDERS = [
+  ProjectService
 ];
 
 @NgModule({

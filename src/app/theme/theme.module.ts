@@ -13,7 +13,8 @@ import {
   DxScrollViewModule, DxSelectBoxModule, DxSliderModule, DxSwitchModule,
   DxTabPanelModule, DxTabsModule, DxTagBoxModule,
   DxTextAreaModule, DxTextBoxModule, DxTooltipModule, DxTreeListModule, DxTreeViewModule,
-  DxValidationGroupModule, DxValidationSummaryModule, DxValidatorModule, DxDrawerModule
+  DxValidationGroupModule, DxValidationSummaryModule, DxValidatorModule, DxDrawerModule,
+  DxSortableModule
 } from 'devextreme-angular';
 
 import {DefaultLayoutComponent, SingleCardLayoutComponent} from './layouts';
@@ -30,7 +31,7 @@ const DEVEXTREME_MODULES = [
   DxFormModule, DxSliderModule, DxNumberBoxModule, DxHtmlEditorModule, DxSchedulerModule,
   DxFileUploaderModule, DxAccordionModule, DxSwitchModule, DxPivotGridModule, DxTabsModule, DxLoadIndicatorModule,
   DxLoadPanelModule, DxTooltipModule, DxProgressBarModule, DxColorBoxModule,
-  DxDropDownBoxModule, DxTreeViewModule, DxRadioGroupModule, DxAutocompleteModule,
+  DxDropDownBoxModule, DxTreeViewModule, DxRadioGroupModule, DxAutocompleteModule, DxSortableModule
 ];
 //
 const BASE_MODULES = [

@@ -1,6 +1,8 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 
 import {ThemeModule} from '@app/theme';
+import { RouterModule } from '@angular/router';
+
 import {AuthenticationService, AuthGuard, GuestGuard, LoggedUserService} from '@app/services/auth';
 import {ApiService, AppLoadService, ScreenService} from '@app/services/shared';
 
@@ -20,7 +22,8 @@ const COMPONENTS = [];
 
 @NgModule({
   imports: [
-    ThemeModule
+    ThemeModule,
+    RouterModule
   ],
   declarations: [...COMPONENTS],
   exports: [...COMPONENTS]

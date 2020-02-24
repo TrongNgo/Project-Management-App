@@ -1,3 +1,24 @@
-<div>
-    Board
+<div class="board-container">
+    <div class="board-menu">
+        <div class="d-flex justify-content-between">
+            <div class="left-side-menu d-flex">
+                <!--       Only Staff         -->
+                <dx-button text="Add New Milestone" icon="plus">
+                </dx-button>
+            </div>
+
+            <div class="right-side-menu">
+                <dx-button text="Menu">
+                </dx-button>
+            </div>
+        </div>
+    </div>
+
+    <div class="board-content-container">
+        <div class="board-content">
+            <app-board-list>
+            </app-board-list>
+        </div>
+    </div>
+
 </div>

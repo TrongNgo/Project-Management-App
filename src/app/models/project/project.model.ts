@@ -34,6 +34,7 @@ export class ProjectDetailModel {
     description: string;
     status: ProjectStatusType;
     imageUrl: string;
+    isNew: boolean = false;
 
     creatorId: number;
     isProjectManager: boolean;
@@ -44,5 +45,21 @@ export class ProjectDetailModel {
 }
 
 export class ProjectModel {
+    id: number;
+    description: string;
+    createdDate: Date;
+    projectName: string;
+    status: ProjectStatusType;
+    creatorId: number;
 
+    // lists: ListModel[];
+    // members: MemberModel[];
+    // attachments: AttachmentModel[];
+
+    // Filter
+    // filters: FilterModel;
+
+    constructor(init ?: Partial<ProjectModel>) {
+        Object.assign(this, init);
+    }
 }
