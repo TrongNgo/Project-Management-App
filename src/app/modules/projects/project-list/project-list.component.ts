@@ -4,7 +4,9 @@ import DataSource from 'devextreme/data/data_source';
 
 import {ProjectDetailModel, ProjectViewModel} from '@app/models/project/project.model';
 import {ProjectService} from '@app/services/project/project.service';
-import {ProjectStatusType} from '@app/modules/project/shared/enums';
+import {ProjectStatusType} from '@app/modules/projects/shared/enums';
+import {PROJECT_FILTER_TYPE, PROJECT_STATUS} from '@app/modules/projects/shared/constants';
+import {FilterItem, FilterModel} from '@app/models/project';
 
 @Component({
     selector: 'app-project-list',
@@ -26,14 +28,26 @@ export class ProjectListComponent implements OnInit {
     filteringProjectList: ProjectViewModel[] = [];
     newProject: ProjectDetailModel;
 
+    PROJECT_FILTER_TYPE = PROJECT_FILTER_TYPE;
+    projectFilterStatus: FilterItem[] = [];
+
     isProcessing: boolean = false;
     isOpenProjectDetailPopup: boolean = false;
+    isOpenFilterStatusPopup: boolean = false;
 
     constructor(private projectService: ProjectService) {
     }
 
     ngOnInit() {
         this.getProjects();
+
+        PROJECT_STATUS.forEach((status) => {
+            this.projectFilterStatus.push({
+                value: status.value,
+                text: status.text,
+                isChecked: false
+            });
+        });
     }
 
     getProjects() {
@@ -96,4 +110,35 @@ export class ProjectListComponent implements OnInit {
     cancelPopup(visible: boolean) {
         this.isOpenProjectDetailPopup = visible;
     }
+
+    // filter Project following status
+    onOpenFilterStatus() {
+        this.isOpenFilterStatusPopup = true;
+    }
+
+    changeProjectStatus(statusValue) {
+        this.projectFilterStatus.forEach(status => {
+            if (status.value === statusValue) {
+                switch (status.isChecked) {
+                    case true:
+                        status.isChecked = false;
+                        this.filteringProjectList = this.projectList;
+                        this.configureDataSource(this.filteringProjectList);
+                        break;
+                    case false:
+                        status.isChecked = true;
+                        this.filterChanged(statusValue);
+                        break;
+                }
+            } else {
+                status.isChecked = false;
+            }
+        });
+    }
+
+    filterChanged(statusValue) {
+        this.filteringProjectList = this.projectList.filter(p => p.status === statusValue);
+        this.configureDataSource(this.filteringProjectList);
+    }
+
 }

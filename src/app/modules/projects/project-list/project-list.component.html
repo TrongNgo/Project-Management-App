@@ -7,14 +7,11 @@
         <div class="list-container">
             <div class="button-container d-flex">
                 <!--       Only Staff         -->
-                <dx-button text="New Project"
-                           (click)="onNewProject()"
-                        icon="plus">
+                <dx-button text="New Project" icon="plus"
+                           (click)="onNewProject()">
                 </dx-button>
-                <dx-button
-                        class="ml-3"
-                        text="Filter"
-                        icon="filter">
+                <dx-button id ="filterBtn" class="ml-3" text="Filter" icon="filter"
+                           (click)="onOpenFilterStatus()">
                 </dx-button>
             </div>
 
@@ -40,16 +37,36 @@
 </ng-container>
 
 <ng-container *ngIf="isOpenProjectDetailPopup">
-    <app-project-detail
+    <app-project-info
             [(visible)]="isOpenProjectDetailPopup"
             [project]="newProject"
             (onSuccess)="getProjects()"
             (onCancel)="cancelPopup($event)">
-    </app-project-detail>
+    </app-project-info>
 </ng-container>
 
-<ng-container>
-    <dx-popover>
-
+<ng-container *ngIf="isOpenFilterStatusPopup">
+    <dx-popover target="#filterBtn"
+            [(visible)]="isOpenFilterStatusPopup"
+            [closeOnOutsideClick]="true">
+        <div class="popover-status">
+            <div class="popover-title">Status</div>
+            <div *ngFor="let status of projectFilterStatus"
+                 class="filter-content"
+                (click)="changeProjectStatus(status.value)">
+                <div [ngClass]="status.isChecked ? 'filter-status active' : 'filter-status'">
+                    <div>{{ status.text }}</div>
+                    <i class="fas fa-check" *ngIf="status.isChecked"></i>
+                </div>
+            </div>
+        </div>
     </dx-popover>
 </ng-container>
+
+<!--
+<div>Status</div>
+            <dx-check-box [(value)]="PROJECT_FILTER_TYPE.isOpen" text="Open" class="mr-3" (onValueChanged)="changeProjectStatus()">
+            </dx-check-box>
+            <dx-check-box [(value)]="PROJECT_FILTER_TYPE.isClose" text="Close" (onValueChanged)="changeProjectStatus()">
+            </dx-check-box>
+-->

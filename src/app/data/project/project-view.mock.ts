@@ -1,7 +1,7 @@
 import * as faker from 'faker';
 import { random, sample } from 'lodash';
 import {ProjectDetailModel, ProjectViewModel} from '@app/models/project/project.model';
-import {ProjectStatusType} from '@app/modules/project/shared/enums';
+import {ProjectStatusType} from '@app/modules/projects/shared/enums';
 
 function mockId() {
     return faker.random.number();
@@ -11,9 +11,8 @@ export function getRandomProjectView(count: number): ProjectViewModel[] {
     return Array(count).fill({}).map((item: ProjectViewModel, index) => {
         const projectName = faker.name.findName();
         const projectNameArray = projectName.split( ' ');
-        const urlName = projectNameArray.reduce((acc, n) => {
-                return acc + '-' + n.toLocaleLowerCase();
-            }, '');
+        const urlName = projectNameArray.join('-').toLocaleLowerCase();
+
         const completedTaskCount = random(1, 20);
         const imgSample = sample([
             'https://www.denverslocksmiths.com/wp-content/uploads/2018/04/airbnblogo.png',

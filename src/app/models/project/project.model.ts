@@ -1,4 +1,4 @@
-import { ProjectStatusType } from '@app/modules/project/shared/enums';
+import { ProjectStatusType } from '@app/modules/projects/shared/enums';
 
 export class ProjectViewModel {
     id: number;

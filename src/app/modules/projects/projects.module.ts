@@ -9,16 +9,16 @@ import {
   ClientService
 } from '@app/services/project';
 
-import {ProjectsComponent} from '@app/modules/project/projects.component';
-import {ProjectListComponent} from '@app/modules/project/project-list/project-list.component';
-import {ProjectItemComponent} from '@app/modules/project/project-item/project-item.component';
-import {ProjectDetailComponent} from '@app/modules/project/project-detail/project-detail.component';
+import {ProjectsComponent} from '@app/modules/projects/projects.component';
+import {ProjectListComponent} from '@app/modules/projects/project-list/project-list.component';
+import {ProjectItemComponent} from '@app/modules/projects/project-item/project-item.component';
+import {ProjectInfoComponent} from '@app/modules/projects/project-info/project-info.component';
 
 const COMPONENTS = [
   ProjectsComponent,
   ProjectListComponent,
   ProjectItemComponent,
-  ProjectDetailComponent
+  ProjectInfoComponent
 ];
 
 const PROVIDERS = [

@@ -5,17 +5,17 @@ import {cloneDeep, isEqual} from 'lodash';
 import {AppNotify} from '@app/utilities';
 
 import {ProjectDetailModel} from '@app/models/project/project.model';
-import {PROJECT_STATUS} from '@app/modules/project/shared/constants';
+import {PROJECT_STATUS} from '@app/modules/projects/shared/constants';
 import {ClientService, ProjectService} from '@app/services/project';
 import {ClientModel} from '@app/models/project';
 
 @Component({
-    selector: 'app-project-detail',
-    templateUrl: 'project-detail.component.html',
-    styleUrls: ['./project-detail.component.scss']
+    selector: 'app-project-info',
+    templateUrl: 'project-info.component.html',
+    styleUrls: ['./project-info.component.scss']
 })
 
-export class ProjectDetailComponent implements OnInit, DoCheck {
+export class ProjectInfoComponent implements OnInit, DoCheck {
     @ViewChild('validationGroup', {static: false}) validationGroup: DxValidationGroupComponent;
 
     private _visible: boolean = false;

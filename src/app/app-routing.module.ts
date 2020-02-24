@@ -17,7 +17,11 @@ const routes: Routes = [
           },
           {
             path: 'home',
-            loadChildren: () => import('@app/modules/project/projects.module').then(m => m.ProjectsModule)
+            loadChildren: () => import('@app/modules/projects/projects.module').then(m => m.ProjectsModule)
+          },
+          {
+              path: 'project',
+              loadChildren: () => import('@app/modules/project-detail/project-detail.module').then(m => m.ProjectDetailModule)
           }
       ]
   },
