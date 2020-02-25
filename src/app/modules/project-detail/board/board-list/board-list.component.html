@@ -42,53 +42,93 @@ https://js.devexpress.com/Demos/WidgetsGallery/Demo/Scheduler/CustomDragAndDrop/
                                         [data]="list"
                                         (onDragStart)="onTaskDragStart($event)"
                                         (onReorder)="onTaskDrop($event)"
-                                        (onAdd)="onTaskDrop($event)">
+                                        (onAdd)="onTaskDrop($event)"
+                                        (click)="openTaskDetail()">
                                     <div class="card-item dx-card dx-theme-text-color dx-theme-background-color" *ngFor="let task of list">
                                         <div class="task-container">
-                                            <div class="task-title">
-                                                <span>{{ task.name }}</span>
+                                            <div class="task-title d-flex">
+                                                <span class="task-title-index">1.</span>
+<!--                                                <span>{{ task.name }}</span>-->
+                                                <span class="task-name">Refactor Work Module Refactor Work Module</span>
                                             </div>
 
-                                            <div class="edit-btn">
-                                                <span class="edit-btn-icon font-icon">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </span>
+                                            <div class="task-state">
+                                                <span>State: </span>
+                                                <span>In Processing</span>
                                             </div>
 
                                             <div class="due-date">
                                                 <span class="font-icon">
                                                     <i class="far fa-clock"></i>
                                                 </span>
-                                                <span>{{ task.dueDate }}</span>
+                                                <span>20/10/2019</span>
+<!--                                                <span>{{ task.dueDate }}</span>-->
+                                                <span></span>
                                             </div>
 
                                             <div class="list-count">
                                                 <div class="d-flex">
-                                                    <span *ngIf="task.totalAttachments > 0">
-                                                        <i class="fas fa-paperclip"></i>
-                                                        <span>{{ task.totalAttachments }}</span>
+<!--                                                    <span *ngIf="task.totalAttachments > 0">-->
+<!--                                                        <i class="fas fa-paperclip"></i>-->
+<!--                                                        <span>{{ task.totalAttachments }}</span>-->
+<!--                                                    </span>-->
+
+<!--                                                    <span *ngIf="task.totalComments > 0">-->
+<!--                                                        <i class="fas fa-paperclip"></i>-->
+<!--                                                        <span>{{ task.totalComments }}</span>-->
+<!--                                                    </span>-->
+
+<!--                                                    <span *ngIf="task.totalChecklistItem > 0">-->
+<!--                                                        <i [ngClass]="task.progressIsDone ? 'far fa-check-square' : 'far fa-square'"></i>&nbsp;-->
+<!--                                                        <span>{{task.totalChecklistItemIsCompleted}} / {{ task.totalChecklistItem }}</span>-->
+<!--                                                    </span>-->
+                                                    <span class="list-count-item">
+                                                        <span class="font-icon">
+                                                            <i class="fas fa-paperclip"></i>
+                                                        </span>
+                                                        <span>2</span>
                                                     </span>
 
-                                                    <span *ngIf="task.totalComments > 0">
-                                                        <i class="fas fa-paperclip"></i>
-                                                        <span>{{ task.totalComments }}</span>
+                                                    <span class="list-count-item">
+                                                        <span class="font-icon">
+                                                          <i class="far fa-comment"></i>
+                                                        </span>
+                                                        <span>5</span>
                                                     </span>
 
-                                                    <span *ngIf="task.totalChecklistItem > 0">
-                                                        <i [ngClass]="task.progressIsDone ? 'far fa-check-square' : 'far fa-square'"></i>&nbsp;
-                                                        <span>{{task.totalChecklistItemIsCompleted}} / {{ task.totalChecklistItem }}</span>
+                                                    <span class="list-count-item">
+<!--                                                        <span class="font-icon">-->
+<!--                                                            <i [ngClass]="task.progressIsDone ? 'far fa-check-square' : 'far fa-square'"></i>-->
+<!--                                                        </span>-->
+                                                        <span class="font-icon">
+                                                            <i class="far fa-check-square"></i>
+                                                        </span>
+                                                        <span>1/ 6</span>
                                                     </span>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div class="add-new-task" (click)="createNewTask()">
+                                        <span class="add-new-task-content">Add a task</span>
                                     </div>
                                 </dx-sortable>
                             </div>
                         </dx-scroll-view>
                     </div>
                 </div>
+
+                <div class="add-new-list" (click)="createNewTask()">
+                    <span class="add-new-list-content">Add a task</span>
+                </div>
             </dx-sortable>
         </dx-scroll-view>
-
     </div>
 </div>
+
+<ng-container *ngIf="isOpenTaskDetailPopup">
+    <app-task-detail
+        [(visible)]="isOpenTaskDetailPopup">
+    </app-task-detail>
+</ng-container>

@@ -9,10 +9,12 @@ import {
 
 import {BoardComponent} from '@app/modules/project-detail/board/board.component';
 import {BoardListComponent} from '@app/modules/project-detail/board/board-list/board-list.component';
+import {TaskDetailComponent} from '@app/modules/project-detail/board/task/task-detail/task-detail.component';
 
 const COMPONENTS = [
   BoardComponent,
-  BoardListComponent
+  BoardListComponent,
+  TaskDetailComponent
 ];
 
 const PROVIDERS = [

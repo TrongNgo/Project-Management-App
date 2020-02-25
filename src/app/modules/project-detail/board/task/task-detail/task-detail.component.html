@@ -1,0 +1,21 @@
+
+<dx-popup
+    [minHeight]="550"
+    [dragEnabled]="false"
+    [(visible)]="visible"
+    [showCloseButton]="true">
+    <div *dxTemplate="let data of 'content'">
+        <dx-load-panel *ngIf="isProcessing"
+                       [visible]="true" [showPane]="false"
+                       [message]="'Processing'">
+        </dx-load-panel>
+
+        <div class="row popup-wrapper">
+            <dx-validation-group #validationGroup>
+                <div class="form-wrapper">
+
+                </div>
+            </dx-validation-group>
+        </div>
+    </div>
+</dx-popup>

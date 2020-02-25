@@ -11,9 +11,10 @@ export class BoardListComponent implements OnInit {
         [{value: 'Not Started'}],
         [{value: 'Need Assistance'}],
         [{value: 'In Progress'}],
-        [{value: 'Deferred'}],
-        [{value: 'Completed'}]
+        [{value: 'Deferred'}]
     ];
+
+    isOpenTaskDetailPopup: boolean = false;
 
     constructor() {
     }
@@ -36,5 +37,13 @@ export class BoardListComponent implements OnInit {
     onTaskDrop(e) {
         e.fromData.splice(e.fromIndex, 1);
         e.toData.splice(e.toIndex, 0, e.itemData);
+    }
+
+    openTaskDetail() {
+        this.isOpenTaskDetailPopup = true;
+    }
+
+    createNewTask() {
+        this.isOpenTaskDetailPopup = true;
     }
 }
