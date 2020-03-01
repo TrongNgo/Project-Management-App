@@ -1,21 +1,132 @@
 
-<dx-popup
+<dx-popup class="task-popup-container"
     [minHeight]="550"
+    [width]="900"
     [dragEnabled]="false"
-    [(visible)]="visible"
-    [showCloseButton]="true">
+    [(visible)]="visible">
     <div *dxTemplate="let data of 'content'">
         <dx-load-panel *ngIf="isProcessing"
                        [visible]="true" [showPane]="false"
                        [message]="'Processing'">
         </dx-load-panel>
 
-        <div class="row popup-wrapper">
-            <dx-validation-group #validationGroup>
-                <div class="form-wrapper">
+        <span class="close-button font-icon" (click)="closePopup()">
+            <i class="fas fa-times"></i>
+        </span>
 
+        <div class="row">
+            <!-- Task Name -->
+            <div class="col-12">
+                <div class="task-name-container">
+                    <dx-text-area class="task-name w-90"
+                                  [autoResizeEnabled]="true"
+                                  [value]="taskName">
+                    </dx-text-area>
                 </div>
-            </dx-validation-group>
+            </div>
+
+            <div class="col-8 task-detail-container">
+                <!-- left side -->
+                <div class="row align-items-center mt-2">
+                    <div class="col-6 task-in-list">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                In list
+                            </div>
+                            <div class="col-8">
+                                TODO
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                State
+                            </div>
+
+                            <div class="col-8">
+                                <!-- state -->
+                                <div class="task-state-list">
+                                    <dx-select-box
+                                            class="w-100"
+                                            [dataSource]="TASK_STATUS"
+                                            valueExpr="value"
+                                            displayExpr="text"
+                                            [(value)]="taskState"
+                                            fieldTemplate="field">
+                                        <!--  show on field  -->
+                                        <div *dxTemplate="let data of 'field'" class="task-state-item d-flex align-items-center">
+                                            <span [style.backgroundColor]="displayStateColor(data)" class="state-color"></span>
+                                            <dx-text-box class="task-name"
+                                                         [value]="displayStateText(data)"
+                                                         [readOnly]="true">
+                                            </dx-text-box>
+                                        </div>
+                                        <!--  show on list -->
+                                        <div *dxTemplate="let data of 'item'" class="task-state-item">
+                                            <span [style.backgroundColor]="data.color" class="state-color"></span>
+                                            <span class="ml-3">{{ data.text }}</span>
+                                        </div>
+                                    </dx-select-box>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center mt-3">
+                    <div class="col-6 task-in-list">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                Start Date
+                            </div>
+                            <div class="col-8">
+                                <dx-date-box
+                                        type="date"
+                                        class="w-100"
+                                        [min]="min"
+                                        [(value)]="editingTask.startDate"
+                                        (onOptionChanged)="onStartDateChange()">
+                                </dx-date-box>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                End Date
+                            </div>
+
+                            <div class="col-8">
+                                <dx-date-box
+                                        type="date"
+                                        class="w-100"
+                                        [min]="minStartDate"
+                                        [(value)]="editingTask.endDate">
+                                </dx-date-box>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+
+            </div>
+            <!-- Right side -->
+            <!--      start date           -->
+            <!--   end date   -->
+            <!-- Associated Milestone  -->
+            <!--   Description   -->
+
+
+            <!-- Left side -->
+            <!--      Save Button           -->
+            <!--   Status select box   -->
+            <!-- Priority  -->
+            <!--   Attachments   -->
         </div>
     </div>
 </dx-popup>

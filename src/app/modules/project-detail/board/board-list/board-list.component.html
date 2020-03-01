@@ -36,6 +36,13 @@ https://js.devexpress.com/Demos/WidgetsGallery/Demo/Scheduler/CustomDragAndDrop/
                                         [scrollByContent]="false"
                                         [bounceEnabled]="false">
                             <div class="list-content">
+                                <div class="add-new-task" (click)="createNewTask()">
+                                    <span class="font-icon">
+                                        <i class="fas fa-plus"></i>
+                                    </span>
+                                    <span class="add-new-task-content">Add a task</span>
+                                </div>
+
                                 <dx-sortable
                                         class="sortable-cards"
                                         group="cardsGroup"
@@ -109,10 +116,6 @@ https://js.devexpress.com/Demos/WidgetsGallery/Demo/Scheduler/CustomDragAndDrop/
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="add-new-task" (click)="createNewTask()">
-                                        <span class="add-new-task-content">Add a task</span>
-                                    </div>
                                 </dx-sortable>
                             </div>
                         </dx-scroll-view>
@@ -120,7 +123,10 @@ https://js.devexpress.com/Demos/WidgetsGallery/Demo/Scheduler/CustomDragAndDrop/
                 </div>
 
                 <div class="add-new-list" (click)="createNewTask()">
-                    <span class="add-new-list-content">Add a task</span>
+                    <span class="font-icon">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="add-new-list-content">Add another list</span>
                 </div>
             </dx-sortable>
         </dx-scroll-view>

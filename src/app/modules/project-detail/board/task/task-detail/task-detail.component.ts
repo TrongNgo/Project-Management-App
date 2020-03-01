@@ -8,6 +8,8 @@ import {ProjectDetailModel} from '@app/models/project/project.model';
 import {PROJECT_STATUS} from '@app/modules/projects/shared/constants';
 import {ClientService, ProjectService} from '@app/services/project';
 import {ClientModel} from '@app/models/project';
+import {TASK_STATUS, TaskStatusType} from "@app/modules/project-detail/board/shared";
+import {TaskModel} from "@app/models/project/task/task.model";
 
 @Component({
     selector: 'app-task-detail',
@@ -34,74 +36,56 @@ export class TaskDetailComponent implements OnInit, DoCheck {
     @Output() onSuccess = new EventEmitter();
     @Output() onCancel = new EventEmitter<boolean>();
 
-    editingProject: ProjectDetailModel;
-    clients: ClientModel[] = [];
+    editingTask: TaskModel;
 
-    PROJECT_STATUS = PROJECT_STATUS;
+    taskName = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit';
+    taskState = TaskStatusType.NotStarted;
+
+    TASK_STATUS = TASK_STATUS;
     min: Date = new Date();
     minStartDate: Date;
 
     isProcessing: boolean = false;
-    isFormDirty: boolean = false;
 
     constructor() {
     }
 
     ngOnInit() {
         this.cloneSource();
-    }
+        console.log('TASK_STATUS', this.TASK_STATUS);
 
-    cloneSource() {
-        this.editingProject = cloneDeep(this.project);
-    }
-
-    ngDoCheck() {
-        this.isFormDirty = !isEqual(this.editingProject, this.project);
-    }
-
-    showProcessing() {
-        setTimeout(() => {
-            this.isProcessing = true;
-        });
-    }
-
-    hideProcessing() {
-        setTimeout(() => {
-            this.isProcessing = false;
-        });
-    }
-
-    submitForm() {
-
-    }
-
-    saveProjectDetail(isUpdated: boolean) {
-
-    }
-
-
-
-    handleUpdateProjectDetail(): Promise<boolean>  {
-        if (this.isFormDirty && this.editingProject.id) {
-            return new Promise<boolean>((resolve, reject) => {
-                resolve(true);
-            });
-        } else {
-            return new Promise<boolean>((resolve, reject) => {
-                resolve(false);
-            });
+        if (!!!this.editingTask) {
+            this.editingTask = new TaskModel();
         }
     }
 
-    onCancelForm() {
-
+    cloneSource() {
     }
 
-    isValidateProjectInfo() {
-
+    ngDoCheck() {
     }
 
-    displayClientInfo(client) {
-
+    displayStateText(data) {
+        if (data) {
+            return `${data.text}`;
+        }
+        return '';
     }
+
+    displayStateColor(data) {
+        if (data) {
+            return `${data.color}`;
+        }
+        return '';
+    }
+
+    closePopup() {
+        this.visible = false;
+    }
+
+    // date
+    onStartDateChange() {
+        this.minStartDate = this.editingTask.startDate;
+    }
+
 }

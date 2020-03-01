@@ -9,9 +9,11 @@ export class TaskModel {
     createdAt: Date;
     name: string;
     description: string;
+    startDate: Date;
+    endDate: Date;
     priority: number;
     dueDate?: Date;
-    
+
     status: TaskStatusType;
     isCompleted: boolean;
     order: number;
