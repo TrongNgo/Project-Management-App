@@ -1,4 +1,5 @@
 import {TaskStatusType} from '@app/modules/project-detail/board/shared';
+import {MemberModel} from '@app/models/project/member.model';
 
 export class TaskModel {
     id: number;
@@ -17,6 +18,7 @@ export class TaskModel {
     status: TaskStatusType;
     isCompleted: boolean;
     order: number;
+    assignTo: MemberModel;
 
     memberIds: number[];
     // Attachment

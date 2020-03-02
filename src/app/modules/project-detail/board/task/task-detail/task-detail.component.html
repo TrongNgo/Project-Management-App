@@ -110,6 +110,45 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row align-items-center mt-3">
+                    <div class="col-auto task-member">
+                        <div class="row align-items-center">
+                            <div class="col-4">
+                                Assign To
+                            </div>
+                            <div class="col-8">
+                                <dx-select-box
+                                        class="w-100"
+                                        [dataSource]="members"
+                                        valueExpr="id"
+                                        displayExpr="fullName"
+                                        [(value)]="assignTo">
+                                    <!--  show on field  -->
+<!--                                    <div *dxTemplate="let data of 'field'" class="task-member-item d-flex align-items-center">-->
+<!--                                        <img *ngIf="data?.avatarImg" [src]="data.avatarImg" alt="avatar">-->
+<!--                                        <div *ngIf="!data?.avatarImg" class="member-avatar">-->
+<!--                                            <span>{{ data.nameAvatar }}</span>-->
+<!--                                        </div>-->
+<!--                                        <dx-text-box class="task-name"-->
+<!--                                                     [value]="displayMemberInfo(data)"-->
+<!--                                                     [readOnly]="true">-->
+<!--                                        </dx-text-box>-->
+<!--                                    </div>-->
+                                    <!--  show on list -->
+                                    <div *dxTemplate="let data of 'item'" class="task-member-item">
+                                        <img *ngIf="data?.avatarImg" [src]="data.avatarImg" alt="avatar">
+                                        <div *ngIf="!data?.avatarImg" class="member-avatar">
+                                            <span>{{ data.nameAvatar }}</span>
+                                        </div>
+                                        <span class="ml-3">{{ data.fullName }}</span>
+                                        <span class="ml-3">{{ data.email }}</span>
+                                    </div>
+                                </dx-select-box>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="col-4">

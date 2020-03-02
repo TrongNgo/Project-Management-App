@@ -35,7 +35,7 @@
     }
 
     ::ng-deep .dx-texteditor.dx-editor-outlined.dx-state-focused {
-        border: 1px solid $main-border-color;
+        border: 1px solid $secondary-color;
     }
 }
 
@@ -76,7 +76,7 @@
     }
 
     dx-select-box.dx-texteditor.dx-editor-outlined.dx-state-focused {
-        border: 1px solid $main-border-color;
+        border: 1px solid $secondary-color;
     }
 
     .dx-texteditor-buttons-container {

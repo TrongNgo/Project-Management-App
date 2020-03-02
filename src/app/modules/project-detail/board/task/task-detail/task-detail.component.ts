@@ -8,8 +8,8 @@ import {ProjectDetailModel} from '@app/models/project/project.model';
 import {PROJECT_STATUS} from '@app/modules/projects/shared/constants';
 import {ClientService, ProjectService} from '@app/services/project';
 import {ClientModel} from '@app/models/project';
-import {TASK_STATUS, TaskStatusType} from "@app/modules/project-detail/board/shared";
-import {TaskModel} from "@app/models/project/task/task.model";
+import {TASK_STATUS, TaskStatusType} from '@app/modules/project-detail/board/shared';
+import {TaskModel} from '@app/models/project/task/task.model';
 
 @Component({
     selector: 'app-task-detail',
@@ -47,12 +47,43 @@ export class TaskDetailComponent implements OnInit, DoCheck {
 
     isProcessing: boolean = false;
 
+    members = [
+        {
+            id: 1,
+            firstName: 'Trong',
+            lastName: 'Ngo',
+            fullName: 'Trong Ngo',
+            nameAvatar: 'TN',
+            email: 'trong.ngo@enlabsoftware.com',
+            avatarImg: null
+        },
+        {
+            id: 2,
+            firstName: 'Loc',
+            lastName: 'Nguyen',
+            fullName: 'Loc Nguyen',
+            nameAvatar: 'LN',
+            email: 'loc.nguyen@enlabsoftware.com',
+            avatarImg: null
+        },
+        {
+            id: 3,
+            firstName: 'Tan',
+            lastName: 'Nguyen',
+            fullName: 'Tan Nguyen',
+            nameAvatar: 'TN',
+            email: 'tan.nguyeno@enlabsoftware.com',
+            avatarImg: null
+        }
+    ];
+    assignTo;
+
     constructor() {
     }
 
     ngOnInit() {
         this.cloneSource();
-        console.log('TASK_STATUS', this.TASK_STATUS);
+        console.log('TASK_STATUS', this.members);
 
         if (!!!this.editingTask) {
             this.editingTask = new TaskModel();
@@ -88,4 +119,11 @@ export class TaskDetailComponent implements OnInit, DoCheck {
         this.minStartDate = this.editingTask.startDate;
     }
 
+    // assign to
+    displayMemberInfo(member) {
+        if (member) {
+            return `${member.fullName} - ${member.email}`;
+        }
+        return '';
+    }
 }
