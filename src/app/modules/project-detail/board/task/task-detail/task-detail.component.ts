@@ -72,11 +72,39 @@ export class TaskDetailComponent implements OnInit, DoCheck {
             lastName: 'Nguyen',
             fullName: 'Tan Nguyen',
             nameAvatar: 'TN',
-            email: 'tan.nguyeno@enlabsoftware.com',
+            email: 'tan.nguyen@enlabsoftware.com',
             avatarImg: null
         }
     ];
     assignTo;
+
+    toolbar = [
+        'bold', 'italic', 'strike', 'underline', 'separator',
+        'orderedList', 'bulletList', 'separator',
+        'alignLeft', 'alignCenter', 'alignRight', 'separator',
+        {
+            formatName: 'header',
+            formatValues: [1, 2, 3, 4, 5, false],
+            options: {
+                width: 120
+            }
+        },
+        {
+            formatName: 'font',
+            formatValues: ['Arial', 'Courier Draft', 'Georgia', 'Impact', 'Lucida Console', 'Tahoma', 'Times Draft Roman', 'Verdana']
+        },
+        {
+            formatName: 'size',
+            formatValues: ['8pt', '10pt', '12pt', '14pt', '18pt', '24pt', '36pt'],
+            options: {
+                width: 80
+            }
+        },
+        'color', 'background', 'separator',
+        'link', 'image', 'separator',
+        'clear', 'codeBlock', 'blockquote',
+        'undo', 'redo', 'separator',
+    ];
 
     constructor() {
     }
@@ -122,8 +150,8 @@ export class TaskDetailComponent implements OnInit, DoCheck {
     // assign to
     displayMemberInfo(member) {
         if (member) {
-            return `${member.fullName} - ${member.email}`;
+            return `${member.fullName}`;
         }
-        return '';
+        return 'Member...';
     }
 }

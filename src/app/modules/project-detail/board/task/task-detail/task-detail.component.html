@@ -112,41 +112,63 @@
                 </div>
 
                 <div class="row align-items-center mt-3">
-                    <div class="col-auto task-member">
-                        <div class="row align-items-center">
-                            <div class="col-4">
-                                Assign To
+                    <div class="col-2">
+                        Assign To
+                    </div>
+                    <div class="col-6">
+                        <dx-select-box
+                                class="w-100 task-member"
+                                [searchEnabled]="true"
+                                [searchExpr]="['fullName', 'email']"
+                                [dataSource]="members"
+                                valueExpr="id"
+                                displayExpr="fullName"
+                                [(value)]="assignTo"
+                                fieldTemplate="field">
+                            <div *dxTemplate="let data of 'field'" class="task-member-item d-flex align-items-center">
+                                <img *ngIf="data?.avatarImg" [src]="data.avatarImg" alt="avatar">
+                                <div *ngIf="!data?.avatarImg" class="member-avatar">
+                                    <span>{{ data?.nameAvatar }}</span>
+                                </div>
+                                <dx-text-box class="task-name"
+                                             [value]="displayMemberInfo(data)"
+                                             [readOnly]="true">
+                                </dx-text-box>
                             </div>
-                            <div class="col-8">
-                                <dx-select-box
-                                        class="w-100"
-                                        [dataSource]="members"
-                                        valueExpr="id"
-                                        displayExpr="fullName"
-                                        [(value)]="assignTo">
-                                    <!--  show on field  -->
-<!--                                    <div *dxTemplate="let data of 'field'" class="task-member-item d-flex align-items-center">-->
-<!--                                        <img *ngIf="data?.avatarImg" [src]="data.avatarImg" alt="avatar">-->
-<!--                                        <div *ngIf="!data?.avatarImg" class="member-avatar">-->
-<!--                                            <span>{{ data.nameAvatar }}</span>-->
-<!--                                        </div>-->
-<!--                                        <dx-text-box class="task-name"-->
-<!--                                                     [value]="displayMemberInfo(data)"-->
-<!--                                                     [readOnly]="true">-->
-<!--                                        </dx-text-box>-->
-<!--                                    </div>-->
-                                    <!--  show on list -->
-                                    <div *dxTemplate="let data of 'item'" class="task-member-item">
-                                        <img *ngIf="data?.avatarImg" [src]="data.avatarImg" alt="avatar">
-                                        <div *ngIf="!data?.avatarImg" class="member-avatar">
-                                            <span>{{ data.nameAvatar }}</span>
-                                        </div>
-                                        <span class="ml-3">{{ data.fullName }}</span>
-                                        <span class="ml-3">{{ data.email }}</span>
-                                    </div>
-                                </dx-select-box>
+                            <div *dxTemplate="let data of 'item'" class="task-member-item">
+                                <img *ngIf="data?.avatarImg" [src]="data.avatarImg" alt="avatar">
+                                <div *ngIf="!data?.avatarImg" class="member-avatar">
+                                    <span>{{ data.nameAvatar }}</span>
+                                </div>
+                                <div class="task-member-content-container">
+                                    <span class="ml-2 task-member-content">{{ data.fullName }}</span>
+                                    <span class="ml-2 task-member-content">{{ data.email }}</span>
+                                </div>
                             </div>
-                        </div>
+                        </dx-select-box>
+                    </div>
+                </div>
+
+                <div class="row align-items-center mt-3">
+                    <div class="col-12">
+                        Description
+                    </div>
+
+                    <div class="col-12">
+                        <dx-html-editor
+                                class="html-editor-item"
+                                valueType="html"
+                                [(value)]="assignTo"
+                                [height]="300"
+                                [placeholder]="'Write'">
+                            <dxo-toolbar [items]="toolbar" class="toolbar-wrapper"></dxo-toolbar>
+                            <dxo-media-resizing [enabled]=true></dxo-media-resizing>
+                            <dx-validator>
+                                <dxi-validation-rule type="required"
+                                                     [message]="'ThisFieldIsRequired'">
+                                </dxi-validation-rule>
+                            </dx-validator>
+                        </dx-html-editor>
                     </div>
                 </div>
             </div>

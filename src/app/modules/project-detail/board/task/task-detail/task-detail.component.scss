@@ -89,4 +89,58 @@
     }
 }
 
+// Task member
+::ng-deep .task-member-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .member-avatar {
+        overflow: hidden;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        position: relative;
+
+        span {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    .task-member-content-container {
+        display: flex;
+        flex-direction: column;
+
+        .task-member-content {
+            display: inline-block;
+        }
+    }
+}
+
+::ng-deep .task-member {
+    border: none !important;
+
+    .dx-texteditor-buttons-container {
+        display: none;
+    }
+}
+
+::ng-deep .html-editor-item {
+    .dx-htmleditor-toolbar-wrapper {
+        .dx-htmleditor-toolbar {
+            .dx-toolbar-items-container {
+                .dx-toolbar-text-auto-hide .dx-button .dx-icon {
+                    color: #5e5c78;
+                }
+            }
+        }
+    }
+}
 
